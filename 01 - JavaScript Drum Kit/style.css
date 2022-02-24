@@ -1,0 +1,65 @@
+html {
+  font-size: 10px;
+  background: url('./chimes.jpeg') bottom center;
+  background-size: cover;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+div[key-color="pink"] {
+  background: pink;
+}
+
+div[key-color="light-pink"]{
+  background: #EFC7C2
+}
+
+div[key-color="light-green"]{
+  background: #BFD3C1
+}
+
+div[key-color="coffee"]{
+  background: #6D4C3D
+}
+
+div[key-color="grey"]{
+  background: #565656
+}
+
+.key {
+  border: .2rem solid black;
+  border-radius: 50% / 50% 50% 5% 5%;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem .5rem;
+  transition: all .07s ease;
+  width: 100rem;
+  height: 8rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: rotate(10deg);
+  border-color: grey;
+  box-shadow: 0 0 1rem whitesmoke;
+}
+
+kbd {
+  font-family: 'Shizuru', cursive;
+  display: block;
+  font-size: 6rem;
+}

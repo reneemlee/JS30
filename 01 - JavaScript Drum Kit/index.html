@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Japanese Chimes</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shizuru&display=swap" rel="stylesheet">
+</head>
+<body>asdfasdf
+
+  <div class="keys">
+    <div data-key="65" class="key" key-color="pink">
+      <kbd>A</kbd>
+    </div>
+    <div data-key="83" class="key" key-color="light-pink">
+      <kbd>S</kbd>
+    </div>
+    <div data-key="68" class="key" key-color="light-green">
+      <kbd>D</kbd>
+    </div>
+    <div data-key="70" class="key" key-color="coffee">
+      <kbd>F</kbd>
+    </div>
+    <div data-key="71" class="key" key-color="grey">
+      <kbd>G</kbd>
+    </div>
+    <div data-key="72" class="key" key-color="coffee">
+      <kbd>H</kbd>
+    </div>
+    <div data-key="74" class="key" key-color="light-green">
+      <kbd>J</kbd>
+    </div>
+    <div data-key="75" class="key" key-color="light-pink">
+      <kbd>K</kbd>
+    </div>
+    <div data-key="76" class="key" key-color="pink">
+      <kbd>L</kbd>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/a.wav"></audio>
+  <audio data-key="83" src="sounds/s.wav"></audio>
+  <audio data-key="68" src="sounds/d.wav"></audio>
+  <audio data-key="70" src="sounds/f.wav"></audio>
+  <audio data-key="71" src="sounds/g.wav"></audio>
+  <audio data-key="72" src="sounds/h.wav"></audio>
+  <audio data-key="74" src="sounds/j.wav"></audio>
+  <audio data-key="75" src="sounds/k.wav"></audio>
+  <audio data-key="76" src="sounds/l.wav"></audio>
+
+<script>
+  function playSound(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return; //stop the function from running
+    audio.currentTime = 0; //rewind to the start
+    audio.play();
+    key.classList.add('playing');    
+  };
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // skip it if it's not a transform
+    this.classList.remove('playing')
+  };
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  window.addEventListener('keydown', playSound);
+</script>
+
+</body>
+</html>
