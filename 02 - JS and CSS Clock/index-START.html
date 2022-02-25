@@ -10,7 +10,8 @@
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
+        <div class="hand second-hand" style="
+        transform: rotate(60deg)";></div>
       </div>
     </div>
 
@@ -61,13 +62,22 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%
     }
 
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
 
-
+    function setDate(){
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const secondsDegrees = ((seconds/60) * 360) + 90
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+      console.log(seconds)
+    }
+    setInterval(setDate, 1000);
   </script>
 </body>
 </html>
